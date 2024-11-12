@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Home/Home";
@@ -25,8 +25,8 @@ function App() {
         <Route path="/area" element={<Area />} />
         <Route path="/breakfast" element={<Breakfast />} />
         <Route path="dessert" element={<Dessert />} />
+
         <Route path="vegetarian" element={<Vegetarian />} />
-       
       </Routes>
 
       <Footer />

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 function IngredientCards() {
@@ -43,20 +42,6 @@ function IngredientCards() {
               <img
                 src="https://cdn.pixabay.com/photo/2022/06/27/05/38/spices-7286739_1280.jpg"
                 alt="Food Area"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </Link>
-
-          <Link to="/random-meal" className="group">
-            <div className="relative border border-gray-200 h-60 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform transition-transform hover:scale-105 bg-gray-800">
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-90"></div>
-              <p className="absolute bottom-6 left-6 text-white text-xl font-semibold z-10 group-hover:text-yellow-400 transition-colors">
-                Search Random Meal
-              </p>
-              <img
-                src="https://cdn.pixabay.com/photo/2018/05/01/18/21/eclair-3366430_1280.jpg"
-                alt="Random Meal"
                 className="h-full w-full object-cover"
               />
             </div>

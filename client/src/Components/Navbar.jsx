@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/cookarologo.png";
 
@@ -71,13 +71,7 @@ const Navbar = () => {
                 >
                   Area
                 </Link>
-                <Link
-                  to="/random-meal"
-                  onClick={closeDropdown}
-                  className="block px-4 py-2 text-gray-300 hover:text-yellow-400"
-                >
-                  Random Meal
-                </Link>
+
                 <Link
                   to="/breakfast"
                   onClick={closeDropdown}

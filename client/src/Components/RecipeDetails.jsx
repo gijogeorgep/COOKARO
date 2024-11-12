@@ -19,7 +19,6 @@ const RecipeDetails = () => {
       setLoading(true);
       setError(null);
       try {
-        
         const response = await axios.get(`${URL_DETAILS}${id}`);
         const data = response.data;
         if (data.meals) {
@@ -40,6 +39,7 @@ const RecipeDetails = () => {
           setError("No meals found.");
         }
       } catch (error) {
+        console.log(error);
         setError("Error fetching recipe details. Please try again later.");
       } finally {
         setLoading(false);
@@ -91,7 +91,7 @@ const RecipeDetails = () => {
     <div
       className="flex flex-col items-center justify-center min-h-screen w-full bg-cover bg-center bg-[#1f2937]"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bgimage})`,
+        backgroundImage: `linear-gradient(#00000080, #00000080), url(${bgimage})`,
         backgroundBlendMode: "overlay",
       }}
     >

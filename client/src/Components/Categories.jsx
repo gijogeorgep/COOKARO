@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import chef3 from "../assets/chef3.png";
 
 const Categories = () => {
   const URL_CATEGORIES =

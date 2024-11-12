@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import chef2 from "../assets/chef2.png";
 
 const ContactPage = () => {

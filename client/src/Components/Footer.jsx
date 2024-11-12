@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import c_logo from "../assets/c logo footer.png";
 
 const Footer = () => {
