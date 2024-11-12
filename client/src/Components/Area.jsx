@@ -62,7 +62,7 @@ const Area = () => {
               onClick={() => setActiveArea(area)}
               className={`py-2 px-4 border rounded-lg cursor-pointer m-2 transition duration-200 ${
                 activeArea === area
-                  ? "bg-[#1f2937] text-white"
+                  ? "bg-[#d79734] text-white font-semibold border-[#d79734] transform scale-105"
                   : "bg-[#1f2937] text-blue-200"
               }`}
             >

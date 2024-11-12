@@ -104,6 +104,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-[#374151] shadow-lg z-50 transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -126,6 +127,7 @@ const Navbar = () => {
             HOME
           </Link>
 
+          {/* Mobile Dropdown for Recipes */}
           <div className="flex flex-col space-y-2 cursor-pointer">
             <span
               onClick={toggleMobileDropdown}
@@ -134,7 +136,7 @@ const Navbar = () => {
               RECIPES
             </span>
             {isMobileDropdownOpen && (
-              <div className="pl-4 space-y-2">
+              <div className="flex flex-col pl-4 space-y-2">
                 <Link
                   to="/category"
                   onClick={closeDropdown}
@@ -179,6 +181,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Overlay to close the mobile menu */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40"

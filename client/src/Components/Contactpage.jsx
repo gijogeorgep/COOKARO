@@ -6,11 +6,10 @@ const ContactPage = () => {
     <div className="relative bg-[#1f2937] min-h-screen flex flex-col items-center justify-center px-4 py-8">
       {/* Background image with reduced opacity */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center opacity-30 z-0"
         style={{
-          backgroundImage: `url('https://img.freepik.com/free-photo/vegetables-set-left-black-slate_1220-685.jpg?t=st=1729843596~exp=1729847196~hmac=886c2682fe6ff90186826b43e18e72dc64ca80855a915416786f4ea49a40de37&w=1060')`,
-          opacity: 0.3,
-          zIndex: 0,
+          backgroundImage:
+            "url('https://img.freepik.com/free-photo/vegetables-set-left-black-slate_1220-685.jpg?t=st=1729843596~exp=1729847196~hmac=886c2682fe6ff90186826b43e18e72dc64ca80855a915416786f4ea49a40de37&w=1060')",
         }}
       ></div>
 
