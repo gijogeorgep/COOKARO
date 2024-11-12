@@ -5,30 +5,35 @@ import logo from "../assets/cookarologo.png";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    setIsMobileDropdownOpen(false); // Close dropdown when menu toggles
   };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const toggleMobileDropdown = () => {
+    setIsMobileDropdownOpen(!isMobileDropdownOpen);
+  };
+
   const closeDropdown = () => {
     setIsDropdownOpen(false);
+    setIsMobileDropdownOpen(false);
   };
 
   return (
     <nav className="relative">
       <div className="flex justify-between items-center px-4 py-4 bg-[#111827] shadow-2xl">
-        {/* Logo */}
         <div className="flex items-center">
           <Link to="/">
             <img src={logo} alt="CookKaro Logo" className="w-40 sm:w-56" />
           </Link>
         </div>
 
-        {/* Hamburger Menu for small screens */}
         <div className="sm:hidden">
           <button
             onClick={toggleMenu}
@@ -44,13 +49,11 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Navigation Links for larger screens */}
         <div className="hidden sm:flex items-center space-x-6">
           <Link to="/" className="hover:text-yellow-400 text-white">
             HOME
           </Link>
 
-          {/* Ingredients with Dropdown */}
           <div className="relative z-50" onClick={toggleDropdown}>
             <button className="hover:text-yellow-400 text-white focus:outline-none">
               RECIPES
@@ -71,7 +74,6 @@ const Navbar = () => {
                 >
                   Area
                 </Link>
-
                 <Link
                   to="/breakfast"
                   onClick={closeDropdown}
@@ -102,7 +104,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Slide-in Menu for small screens */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-[#374151] shadow-lg z-50 transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -125,12 +126,14 @@ const Navbar = () => {
             HOME
           </Link>
 
-          {/* Ingredients with Dropdown for small screens */}
           <div className="flex flex-col space-y-2 cursor-pointer">
-            <span onClick={toggleDropdown} className="hover:text-yellow-400">
-              INGREDIENTS
+            <span
+              onClick={toggleMobileDropdown}
+              className="hover:text-yellow-400"
+            >
+              RECIPES
             </span>
-            {isDropdownOpen && (
+            {isMobileDropdownOpen && (
               <div className="pl-4 space-y-2">
                 <Link
                   to="/category"
@@ -145,13 +148,6 @@ const Navbar = () => {
                   className="hover:text-yellow-400"
                 >
                   Area
-                </Link>
-                <Link
-                  to="/random-meal"
-                  onClick={closeDropdown}
-                  className="hover:text-yellow-400"
-                >
-                  Random Meal
                 </Link>
                 <Link
                   to="/breakfast"
@@ -183,7 +179,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Overlay when menu is open */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40"

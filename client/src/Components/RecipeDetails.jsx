@@ -1,7 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios"; // Import axios
-import bgimage from "../assets/meal3.jpg";
 
 const RecipeDetails = () => {
   const navigate = useNavigate();
@@ -89,80 +88,75 @@ const RecipeDetails = () => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-screen w-full bg-cover bg-center bg-[#1f2937]"
+      className="flex flex-col items-center justify-center min-h-screen w-full"
       style={{
-        backgroundImage: `linear-gradient(#00000080, #00000080), url(${bgimage})`,
-        backgroundBlendMode: "overlay",
+        backgroundColor: "#111827", // Fallback background color
+        backgroundImage: "url('https://example.com/your-background-image.jpg')", // Add your image URL here
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundBlendMode: "overlay", // Blend the background image with the overlay color
+        backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-lg border border-white border-opacity-30 p-4 md:p-6 max-w-5xl mx-auto shadow-lg mt-8 mb-8">
-        <h2 className="text-[#d78b21] text-2xl md:text-3xl mb-6 md:mb-10 text-center">
-          Recipe Details
-        </h2>
-
-        <button
-          onClick={() => navigate(-1)}
-          className="bg-[#d78b21] text-white px-4 py-2 rounded-lg mb-6 md:mb-10 hover:bg-[#bf7319] transition-colors"
-        >
-          Back
-        </button>
-
-        {/* Display the meal name */}
-        <h3 className="text-white text-3xl font-bold text-center mb-4">
-          {recipe?.strMeal}
-        </h3>
-
-        <div className="mb-6 w-full flex flex-col md:flex-row justify-center items-center">
+      <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-lg p-6 max-w-5xl mx-auto shadow-lg mt-6 mb-8">
+        <div className="flex flex-col items-center mb-6">
+          {/* Number of People Input */}
           <label
             htmlFor="people"
-            className="block mb-2 md:mb-0 text-lg font-medium text-white"
+            className="block mb-2 text-lg font-medium text-black"
           >
-            Number of People:
+            Adjust Servings:
           </label>
           <input
             type="number"
             id="people"
             value={numPeople}
             onChange={(e) => setNumPeople(Math.max(Number(e.target.value), 1))}
-            className="border border-gray-300 text-gray-900 text-lg rounded-lg p-2 w-24 ml-2"
+            className="border border-gray-300 rounded-lg p-3 text-xl w-32 mb-4"
             min="1"
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left Column: Ingredients */}
-          <div className="flex flex-col">
-            <div className="flex justify-center mb-6 md:mb-8">
-              <img
-                src={recipe?.strMealThumb}
-                alt={recipe?.strMeal || "Recipe image"}
-                className="object-cover rounded-lg shadow-lg"
-                style={{ maxWidth: "100%", maxHeight: "300px" }}
-              />
-            </div>
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-[#d78b21] text-white px-6 py-2 rounded-lg mb-4 hover:bg-[#bf7319] transition-all duration-300 ease-in-out"
+        >
+          Go Back
+        </button>
 
-            <h3 className="text-center text-2xl font-medium mb-6 text-white">
-              Ingredients and Measures
+        <h3 className="text-black text-3xl font-bold text-center mb-6">
+          {recipe?.strMeal}
+        </h3>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
+          {/* Left Column: Meal Image */}
+          <div className="flex flex-col items-center w-full md:w-1/2">
+            <img
+              src={recipe?.strMealThumb}
+              alt={recipe?.strMeal || "Recipe image"}
+              className="rounded-lg shadow-xl w-full object-cover mb-4"
+            />
+            <h3 className="text-black text-xl font-semibold text-center mb-3">
+              Ingredients
             </h3>
-
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center">
+            <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
               {ingredients.map((ingredient, i) => (
                 <div
-                  key={`${ingredient}-${i}`}
-                  className="flex flex-col items-center gap-2"
+                  key={ingredient}
+                  className="bg-white bg-opacity-70 rounded-xl shadow-md p-3 flex flex-col items-center gap-2"
                 >
                   <img
                     src={getIngredientImage(ingredient)}
                     alt={ingredient || "Ingredient image"}
-                    className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg"
+                    className="w-14 h-14 object-cover rounded-md"
                     onError={(e) => {
                       e.target.src = "https://via.placeholder.com/100";
                     }}
                   />
-                  <span className="font-semibold text-white text-sm md:text-base">
+                  <span className="text-black text-sm font-medium">
                     {ingredient}
                   </span>
-                  <span className="text-white text-sm md:text-base">
+                  <span className="text-black text-sm">
                     {adjustMeasure(measures[i])}
                   </span>
                 </div>
@@ -171,19 +165,20 @@ const RecipeDetails = () => {
           </div>
 
           {/* Right Column: Instructions */}
-          <div className="flex flex-col">
-            <h3 className="text-center text-2xl font-medium mb-6 text-white">
+          <div className="flex flex-col items-center w-full md:w-1/2">
+            <h3 className="text-black text-xl font-semibold text-center mb-4">
               Instructions
             </h3>
-            <div className="text-base md:text-lg leading-relaxed space-y-4">
-              {formatInstructions(recipe?.strInstructions).map(
-                (step, index) => (
-                  <p key={index} className="text-white">
-                    <strong>Step {index + 1}: </strong>
-                    {step.trim()}.
-                  </p>
-                )
-              )}
+            <div className="bg-white bg-opacity-60 p-5 rounded-xl shadow-md w-full">
+              <ol className="list-decimal pl-5 text-black space-y-2 text-lg">
+                {formatInstructions(recipe?.strInstructions).map(
+                  (step, index) => (
+                    <li key={index} className="leading-relaxed">
+                      {step.trim()}
+                    </li>
+                  )
+                )}
+              </ol>
             </div>
           </div>
         </div>
