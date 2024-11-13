@@ -14,21 +14,23 @@ function ChefCards() {
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-2xl mx-auto text-center">
-        <h1 className="text-4xl font-extrabold text-center mb-12 text-yellow-500">
+      <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <h1 className="text-4xl font-extrabold mb-12 text-yellow-500">
           Meet Our Top Chefs
         </h1>
         <div className="flex flex-wrap justify-center gap-8 p-4">
           {/* Card 1 */}
-          <div className="relative w-72 h-auto max-w-xs rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl bg-[#1f2937] border border-[#374151]">
+          <div className="relative w-80 h-auto rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl bg-[#1f2937] border border-[#374151]">
             <img
               src={chef2}
               alt="Chef Darwin"
-              className="w-full h-64 object-cover"
+              className="w-full h-64 object-contain bg-white p-4"
             />
-            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/70 to-transparent p-4">
-              <h2 className="text-xl font-bold text-yellow-400">Chef Darwin</h2>
-              <p className="text-sm text-gray-200 mt-1">
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-yellow-400 mb-2">
+                Chef Darwin
+              </h2>
+              <p className="text-sm text-gray-300 leading-relaxed">
                 Known for his bold flavors and innovative fusion dishes, Darwin
                 brings excitement to every plate.
               </p>
@@ -36,34 +38,36 @@ function ChefCards() {
           </div>
 
           {/* Card 2 */}
-          <div className="relative w-72 h-auto max-w-xs rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl bg-[#1f2937] border border-[#374151]">
+          <div className="relative w-80 h-auto rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl bg-[#1f2937] border border-[#374151]">
             <img
               src={chef3}
               alt="Chef Johny Mike"
-              className="w-full h-64 object-cover"
+              className="w-full h-64 object-contain bg-white p-4"
             />
-            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/70 to-transparent p-4">
-              <h2 className="text-xl font-bold text-yellow-400">
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-yellow-400 mb-2">
                 Chef Johny Mike
               </h2>
-              <p className="text-sm text-gray-200 mt-1">
-                Specializing in timeless classics, Johny crafts every dish with
-                passion and finesse, bringing comfort and elegance together.
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Specializing in timeless classics, Johny crafts each dish with
+                passion, combining comfort and elegance.
               </p>
             </div>
           </div>
 
           {/* Card 3 */}
-          <div className="relative w-72 h-auto max-w-xs rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl bg-[#1f2937] border border-[#374151]">
+          <div className="relative w-80 h-auto rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl bg-[#1f2937] border border-[#374151]">
             <img
               src={chef4}
               alt="Chef Merin"
-              className="w-full h-64 object-cover"
+              className="w-full h-64 object-contain bg-white p-4"
             />
-            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/70 to-transparent p-4">
-              <h2 className="text-xl font-bold text-yellow-400">Chef Merin</h2>
-              <p className="text-sm text-gray-200 mt-1">
-                With a knack for surprising flavor twists, Merin crafts culinary
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-yellow-400 mb-2">
+                Chef Merin
+              </h2>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Known for surprising flavor twists, Merin crafts culinary
                 masterpieces that are a treat for the senses.
               </p>
             </div>

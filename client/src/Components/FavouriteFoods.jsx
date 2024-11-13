@@ -45,7 +45,7 @@ const FavouriteFoods = () => {
             Most Loved Recipes
           </h5>
           <h2 className="text-2xl md:text-3xl font-extrabold text-yellow-400 mt-2 mb-4">
-            Our Clients' Favorites
+            Our Clients Favorites
           </h2>
         </div>
 

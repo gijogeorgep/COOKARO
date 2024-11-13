@@ -88,14 +88,9 @@ const RecipeDetails = () => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-screen w-full"
+      className="flex flex-col items-center justify-center min-h-screen w-full bg-gray-900 bg-cover bg-center bg-no-repeat bg-blend-overlay"
       style={{
-        backgroundColor: "#111827", // Fallback background color
-        backgroundImage: "url('https://example.com/your-background-image.jpg')", // Add your image URL here
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundBlendMode: "overlay", // Blend the background image with the overlay color
-        backgroundRepeat: "no-repeat",
+        backgroundImage: "url('https://example.com/your-background-image.jpg')",
       }}
     >
       <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-lg p-6 max-w-5xl mx-auto shadow-lg mt-6 mb-8">

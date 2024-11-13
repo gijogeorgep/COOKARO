@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/cookarologo.png";
 
@@ -9,21 +9,42 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setIsMobileDropdownOpen(false); // Close dropdown when menu toggles
+    setIsDropdownOpen(false);
+    setIsMobileDropdownOpen(false);
   };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+    setIsMenuOpen(false);
   };
 
   const toggleMobileDropdown = () => {
     setIsMobileDropdownOpen(!isMobileDropdownOpen);
   };
 
-  const closeDropdown = () => {
+  const closeAllMenus = () => {
+    setIsMenuOpen(false);
     setIsDropdownOpen(false);
     setIsMobileDropdownOpen(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      console.log(event);
+
+      closeAllMenus();
+    };
+
+    if (isMenuOpen || isDropdownOpen || isMobileDropdownOpen) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isMenuOpen, isDropdownOpen, isMobileDropdownOpen]);
 
   return (
     <nav className="relative">
@@ -36,7 +57,10 @@ const Navbar = () => {
 
         <div className="sm:hidden">
           <button
-            onClick={toggleMenu}
+            onClick={(e) => {
+              e.stopPropagation(); // Prevents the menu toggle button from closing immediately
+              toggleMenu();
+            }}
             className="text-white hover:text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             aria-label="Toggle menu"
           >
@@ -54,7 +78,13 @@ const Navbar = () => {
             HOME
           </Link>
 
-          <div className="relative z-50" onClick={toggleDropdown}>
+          <div
+            className="relative z-50"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleDropdown();
+            }}
+          >
             <button className="hover:text-yellow-400 text-white focus:outline-none">
               RECIPES
             </button>
@@ -62,35 +92,35 @@ const Navbar = () => {
               <div className="absolute bg-[#374151] mt-2 rounded shadow-lg">
                 <Link
                   to="/category"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="block px-4 py-2 text-gray-300 hover:text-yellow-400"
                 >
                   Category
                 </Link>
                 <Link
                   to="/area"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="block px-4 py-2 text-gray-300 hover:text-yellow-400"
                 >
                   Area
                 </Link>
                 <Link
                   to="/breakfast"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="block px-4 py-2 text-gray-300 hover:text-yellow-400"
                 >
                   Breakfast
                 </Link>
                 <Link
                   to="/vegetarian"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="block px-4 py-2 text-gray-300 hover:text-yellow-400"
                 >
                   Vegetarian
                 </Link>
                 <Link
                   to="/dessert"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="block px-4 py-2 text-gray-300 hover:text-yellow-400"
                 >
                   Dessert
@@ -123,14 +153,21 @@ const Navbar = () => {
           />
         </button>
         <div className="flex flex-col mt-16 space-y-4 pl-6 text-gray-300">
-          <Link to="/" className="hover:text-yellow-400 cursor-pointer">
+          <Link
+            to="/"
+            onClick={closeAllMenus}
+            className="hover:text-yellow-400 cursor-pointer"
+          >
             HOME
           </Link>
 
           {/* Mobile Dropdown for Recipes */}
           <div className="flex flex-col space-y-2 cursor-pointer">
             <span
-              onClick={toggleMobileDropdown}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleMobileDropdown();
+              }}
               className="hover:text-yellow-400"
             >
               RECIPES
@@ -139,35 +176,35 @@ const Navbar = () => {
               <div className="flex flex-col pl-4 space-y-2">
                 <Link
                   to="/category"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="hover:text-yellow-400"
                 >
                   Category
                 </Link>
                 <Link
                   to="/area"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="hover:text-yellow-400"
                 >
                   Area
                 </Link>
                 <Link
                   to="/breakfast"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="hover:text-yellow-400"
                 >
                   Breakfast
                 </Link>
                 <Link
                   to="/vegetarian"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="hover:text-yellow-400"
                 >
                   Vegetarian
                 </Link>
                 <Link
                   to="/dessert"
-                  onClick={closeDropdown}
+                  onClick={closeAllMenus}
                   className="hover:text-yellow-400"
                 >
                   Dessert
@@ -175,7 +212,11 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <Link to="/contact" className="hover:text-yellow-400 cursor-pointer">
+          <Link
+            to="/contact"
+            onClick={closeAllMenus}
+            className="hover:text-yellow-400 cursor-pointer"
+          >
             CONTACT
           </Link>
         </div>
