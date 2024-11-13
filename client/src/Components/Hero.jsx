@@ -1,5 +1,4 @@
-import React from "react";
-import heroimg from "../assets/hero_img_1.png"; // Ensure this path is correct
+import heroimg from "../assets/hero_img_1.png";
 
 const Hero = () => {
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 const FavouriteFoods = () => {
@@ -23,76 +23,60 @@ const FavouriteFoods = () => {
     if (direction === "left") {
       setShowRecipe(showRecipe === 0 ? recipes.length - 1 : showRecipe - 1);
     }
-
     if (direction === "right") {
       setShowRecipe(showRecipe === recipes.length - 1 ? 0 : showRecipe + 1);
     }
   };
 
-  const getVisibleIndexes = (index) => {
-    const leftIndex = index === 0 ? recipes.length - 1 : index - 1;
-    const rightIndex = index === recipes.length - 1 ? 0 : index + 1;
-    return { leftIndex, rightIndex, centerIndex: index };
-  };
-
-  const { leftIndex, rightIndex, centerIndex } = getVisibleIndexes(showRecipe);
-
   return (
-    <div className="h-screen w-full mt-24 flex items-center justify-center bg-gray-900 text-gray-200 p-4">
-      <div className="w-11/12 md:w-3/4 lg:w-1/2 mx-auto relative">
-        <div className="flex flex-col items-center mb-12 text-center">
-          <h5 className="text-lg text-yellow-500 uppercase tracking-widest">
+    <div
+      className="min-h-screen w-full flex flex-col items-center justify-center relative bg-cover bg-center bg-fixed bg-no-repeat text-gray-200 p-6"
+      style={{
+        backgroundImage: `url("https://cpmgsandiego.com/wp-content/uploads/2018/03/Family-Cooking.jpg")`,
+      }}
+    >
+      {/* Darkened overlay */}
+      <div className="absolute inset-0 bg-gray-900 opacity-70"></div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-md lg:max-w-2xl mx-auto text-center">
+        <div className="mb-10">
+          <h5 className="text-base md:text-lg text-yellow-400 uppercase tracking-wide">
             Most Loved Recipes
           </h5>
-          <h2 className="text-3xl font-extrabold text-yellow-500 mt-2 mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-yellow-400 mt-2 mb-4">
             Our Clients' Favorites
           </h2>
         </div>
 
-        <div className="relative flex items-center justify-between w-full">
+        <div className="relative flex items-center justify-center">
           {/* Left Arrow */}
           <AiOutlineArrowLeft
             onClick={() => handleArrow("left")}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 text-5xl text-yellow-500 bg-gray-800 bg-opacity-80 rounded-full p-3 cursor-pointer z-10 hover:bg-yellow-500 hover:text-gray-800 transition duration-300"
+            className="absolute left-0 md:left-2 top-1/2 transform -translate-y-1/2 text-3xl md:text-4xl text-yellow-400 bg-gray-900 rounded-full p-2 cursor-pointer z-10 hover:bg-yellow-400 hover:text-gray-900 transition duration-300"
           />
 
-          {/* Images */}
-          <div className="flex items-center justify-center w-full space-x-4">
-            {/* Left Image */}
-            <div className="w-1/3 transition-transform duration-500 transform hover:scale-105">
-              <img
-                src={recipes[leftIndex]?.strMealThumb}
-                alt={recipes[leftIndex]?.strMeal}
-                className="object-cover h-56 w-full opacity-60 rounded-lg shadow-lg"
-              />
-            </div>
-
-            {/* Center Image (Pop effect) */}
-            <div className="w-1/3 transition-transform duration-500 transform scale-110 relative">
-              <img
-                src={recipes[centerIndex]?.strMealThumb}
-                alt={recipes[centerIndex]?.strMeal}
-                className="object-cover h-80 w-full rounded-lg shadow-2xl border-4 border-yellow-500"
-              />
-              <h3 className="absolute bottom-4 left-4 bg-yellow-500 text-gray-900 py-2 px-4 rounded-lg shadow-lg font-bold text-lg">
-                {recipes[centerIndex]?.strMeal}
+          {/* Center Recipe Card */}
+          <div className="w-80 md:w-96 bg-gray-900 bg-opacity-80 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-500">
+            <img
+              src={recipes[showRecipe]?.strMealThumb}
+              alt={recipes[showRecipe]?.strMeal}
+              className="w-full h-60 object-cover"
+            />
+            <div className="p-4 text-center">
+              <h3 className="text-xl font-bold text-yellow-400">
+                {recipes[showRecipe]?.strMeal}
               </h3>
-            </div>
-
-            {/* Right Image */}
-            <div className="w-1/3 transition-transform duration-500 transform hover:scale-105">
-              <img
-                src={recipes[rightIndex]?.strMealThumb}
-                alt={recipes[rightIndex]?.strMeal}
-                className="object-cover h-56 w-full opacity-60 rounded-lg shadow-lg"
-              />
+              <p className="text-gray-300 mt-2">
+                Delicious rice-based meal loved by our clients.
+              </p>
             </div>
           </div>
 
           {/* Right Arrow */}
           <AiOutlineArrowRight
             onClick={() => handleArrow("right")}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-5xl text-yellow-500 bg-gray-800 bg-opacity-80 rounded-full p-3 cursor-pointer z-10 hover:bg-yellow-500 hover:text-gray-800 transition duration-300"
+            className="absolute right-0 md:right-2 top-1/2 transform -translate-y-1/2 text-3xl md:text-4xl text-yellow-400 bg-gray-900 rounded-full p-2 cursor-pointer z-10 hover:bg-yellow-400 hover:text-gray-900 transition duration-300"
           />
         </div>
 
@@ -102,8 +86,8 @@ const FavouriteFoods = () => {
             <div
               key={index}
               onClick={() => setShowRecipe(index)}
-              className={`h-4 w-4 rounded-full cursor-pointer transition duration-300 ${
-                showRecipe === index ? "bg-yellow-500" : "bg-gray-600"
+              className={`h-3 w-3 md:h-4 md:w-4 rounded-full cursor-pointer transition duration-300 ${
+                showRecipe === index ? "bg-yellow-400" : "bg-gray-500"
               }`}
             ></div>
           ))}
