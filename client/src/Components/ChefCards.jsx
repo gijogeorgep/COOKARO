@@ -5,6 +5,7 @@ import chef4 from "../assets/chef4.png";
 function ChefCards() {
   return (
     <div
+      id="chef"
       className="min-h-screen w-full flex flex-col items-center justify-center relative bg-cover bg-center bg-fixed bg-no-repeat text-gray-200 p-6"
       style={{
         backgroundImage: `url("https://images.ctfassets.net/szez98lehkfm/4w7RGCV3yGDj2mYxOO5yXA/440c72b3e289bc86ceb36eb03d6adef3/MyIC_Article116159?w=1106&h=622&fm=webp&fit=fill")`,

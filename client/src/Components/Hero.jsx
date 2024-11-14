@@ -24,11 +24,11 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 animate-fade-in-up">
             <button className="px-5 py-3 bg-[#f59e0b] text-white rounded-full text-lg shadow-lg transition-all duration-300 hover:bg-white hover:text-[#f59e0b] hover:scale-105 transform">
-              Meet Our Chefs
+              <a href="#chef">Meet Our Chefs</a>
             </button>
 
             <button className="px-5 py-3 bg-gray-200 text-[#f59e0b] rounded-full text-lg shadow-lg transition-all duration-300 hover:bg-[#f59e0b] hover:text-white hover:scale-105 transform">
-              Browse Recipes
+              <a href="#ingredient">Browse Recipes</a>
             </button>
           </div>
         </div>

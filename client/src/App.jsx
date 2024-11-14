@@ -25,7 +25,6 @@ function App() {
         <Route path="dessert" element={<Dessert />} />
         <Route path="vegetarian" element={<Vegetarian />} />
       </Routes>
-
       <Footer />
     </div>
   );
