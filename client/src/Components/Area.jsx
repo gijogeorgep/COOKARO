@@ -77,7 +77,7 @@ const Area = () => {
           <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="w-11/12 mx-auto mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="w-11/12 mx-auto mt-12 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {recipes.map((recipe) => (
             <Link
               key={recipe.idMeal}

@@ -43,7 +43,7 @@ const Vegetarian = () => {
       ) : (
         // Vegetarian Recipes Section
         <div className="w-11/12 mx-auto mt-12">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
             {vegetarianRecipes.map((recipe) => (
               <div
                 key={recipe.idMeal}
