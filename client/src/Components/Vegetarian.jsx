@@ -15,7 +15,7 @@ const Vegetarian = () => {
       try {
         const response = await axios.get(URL_VEGETARIAN);
         setVegetarianRecipes(
-          response.data.meals ? response.data.meals.slice(0, 12) : []
+          response.data.meals ? response.data.meals.slice() : []
         );
       } catch (error) {
         console.error("Error fetching vegetarian recipes:", error);

@@ -87,11 +87,11 @@ const RecipeDetails = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-br from-teal-300 via-blue-400 to-indigo-600 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-br via-blue-400 to-indigo-600 p-4">
       <div className="bg-white bg-opacity-80 backdrop-blur-md rounded-xl p-8 max-w-5xl mx-auto shadow-lg mt-6 mb-8">
         <button
           onClick={() => navigate(-1)}
-          className="bg-teal-500 text-white px-5 py-2 rounded-md shadow-md hover:bg-teal-600 transition ease-in-out duration-300 mb-6"
+          className="bg-[#111827] text-white px-5 py-2 rounded-md shadow-md hover:bg-teal-600 transition ease-in-out duration-300 mb-6"
         >
           Go Back
         </button>

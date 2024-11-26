@@ -7,15 +7,16 @@ const Dessert = () => {
     "https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert";
   const [desserts, setDesserts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const dessertsPerPage = 8; // Number of desserts per page
 
+  // Fetch dessert recipes
   useEffect(() => {
     const fetchDessertRecipes = async () => {
       setLoading(true);
       try {
         const response = await axios.get(URL_DESSERT);
-        setDesserts(
-          response.data.meals ? response.data.meals.slice(0, 12) : []
-        );
+        setDesserts(response.data.meals || []);
       } catch (error) {
         console.error("Error fetching dessert recipes:", error);
       } finally {
@@ -24,6 +25,29 @@ const Dessert = () => {
     };
     fetchDessertRecipes();
   }, []);
+
+  // Calculate the current desserts to display
+  const indexOfLastDessert = currentPage * dessertsPerPage;
+  const indexOfFirstDessert = indexOfLastDessert - dessertsPerPage;
+  const currentDesserts = desserts.slice(
+    indexOfFirstDessert,
+    indexOfLastDessert
+  );
+
+  // Handle page navigation
+  const totalPages = Math.ceil(desserts.length / dessertsPerPage);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#111827]">
@@ -44,7 +68,7 @@ const Dessert = () => {
         // Desserts Section
         <div className="w-11/12 mx-auto mt-12">
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            {desserts.map((dessert) => (
+            {currentDesserts.map((dessert) => (
               <div
                 key={dessert.idMeal}
                 className="flex flex-col items-center text-center bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-200 transform hover:scale-105 hover:shadow-lg"
@@ -67,6 +91,35 @@ const Dessert = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Pagination Controls */}
+          <div className="flex justify-center items-center mt-8">
+            <button
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 border rounded-lg mx-2 ${
+                currentPage === 1
+                  ? "bg-gray-400 text-white cursor-not-allowed"
+                  : "bg-[#d79734] text-white hover:bg-[#bc8738]"
+              }`}
+            >
+              Previous
+            </button>
+            <span className="text-white mx-4">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 border rounded-lg mx-2 ${
+                currentPage === totalPages
+                  ? "bg-gray-400 text-white cursor-not-allowed"
+                  : "bg-[#d79734] text-white hover:bg-[#bc8738]"
+              }`}
+            >
+              Next
+            </button>
           </div>
         </div>
       )}

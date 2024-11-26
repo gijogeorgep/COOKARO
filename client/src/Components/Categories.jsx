@@ -39,7 +39,7 @@ const Categories = () => {
         const apiUrl = `${URL_RECIPES}${activeCategory}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
-        setRecipes(data.meals ? data.meals.slice(0, 12) : []);
+        setRecipes(data.meals ? data.meals.slice(0, 46) : []);
       } catch (error) {
         console.error("Error fetching recipes:", error);
       } finally {
